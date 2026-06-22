@@ -228,13 +228,41 @@ body {
   0%   { background-position: 0% 50%; }
   100% { background-position: 100% 50%; }
 }
+
+  /* ===== LIQUID CHROME DREAM EFFECT ===== */
+.kd-title span.dream {
+  display: inline-block;
+  background: linear-gradient(
+    90deg,
+    #ff66cc,
+    #66ccff,
+    #ffcc66,
+    #ff66cc
+  );
+  background-size: 400% 400%;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: dreamChrome 6s ease-in-out infinite;
+  filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.4));
+}
+
+@keyframes dreamChrome {
+  0%   { background-position: 0% 50%;   filter: drop-shadow(0 0 10px #ff66cc); }
+  25%  { background-position: 50% 50%;  filter: drop-shadow(0 0 14px #66ccff); }
+  50%  { background-position: 100% 50%; filter: drop-shadow(0 0 18px #ffcc66); }
+  75%  { background-position: 50% 50%;  filter: drop-shadow(0 0 14px #66ccff); }
+  100% { background-position: 0% 50%;   filter: drop-shadow(0 0 10px #ff66cc); }
+}
+
 </style>
 </head>
 
 <body>
 
 <header class="kd-hero">
-  <h1 class="kd-hero-title">KINETIC DREAM</h1>
+  <h1 class="kd-title">
+  KINETIC <span class="dream">DREAM</span>
+</h1>
   <p style="color:white; text-shadow:0 0 8px black; margin-top:10px;">
     A Personal Psychedelic Museum
   </p>
