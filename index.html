@@ -84,6 +84,20 @@ body {
   overflow: hidden;
 }
 
+/* ⭐ NEW: GLOW FRAME AROUND SOUNDCLOUD BLOCK ⭐ */
+.kd-soundcloud-frame {
+  max-width: 1000px;
+  margin: 0 auto 60px;
+  padding: 30px;
+  border-radius: 22px;
+  background: rgba(0,0,0,0.35);
+  box-shadow:
+    0 0 20px rgba(255, 0, 255, 0.7),
+    0 0 40px rgba(0, 255, 255, 0.7),
+    0 0 60px rgba(255, 255, 0, 0.7);
+  backdrop-filter: blur(4px);
+}
+
 /* ===== CTA BUTTONS ===== */
 .kd-cta-row {
   display: flex;
@@ -150,7 +164,9 @@ body {
   <h2 class="kd-section-title">FEATURED TRACKS — THE SOUND OF KINETIC DREAM</h2>
 </section>
 
-<!-- ⭐⭐⭐ CENTERED 2-COLUMN / 3-ROW SOUNDCLOUD GRID ⭐⭐⭐ -->
+<!-- ⭐⭐⭐ GLOW FRAME + CENTERED 2-COLUMN / 3-ROW GRID ⭐⭐⭐ -->
+<div class="kd-soundcloud-frame">
+
 <section 
   class="kd-track-grid" 
   style="
@@ -158,7 +174,7 @@ body {
     grid-template-columns: repeat(2, 1fr);
     gap: 24px;
     max-width: 900px;
-    margin: 0 auto 60px;
+    margin: 0 auto;
     padding: 0 20px;
     justify-items: center;
   "
@@ -201,6 +217,8 @@ body {
   </div></div>
 
 </section>
+
+</div>
 
 <div class="kd-divider"></div>
 
