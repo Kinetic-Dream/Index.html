@@ -29,7 +29,7 @@ body {
   100% { background-position: 0% 50%; }
 }
 
-/* ===== KINETIC DREAM BANNER (TRANSPARENT EDGE) ===== */
+/* ===== KINETIC DREAM BANNER ===== */
 .kd-banner {
   width: 100%;
   max-width: 1920px;
@@ -55,29 +55,7 @@ body {
   margin: 20px 0 30px;
 }
 
-/* ===== TRACK GALLERY GRID ===== */
-.kd-track-grid {
-  max-width: 1100px;
-  margin: 0 auto 60px;
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 24px;
-  padding: 0 20px;
-}
-
-@media (max-width: 900px) {
-  .kd-track-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-@media (max-width: 600px) {
-  .kd-track-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* ===== INDIVIDUAL TRACK CARD — NEON FRAME + RIPPLE ===== */
+/* ===== TRACK CARD ===== */
 .kd-track-card {
   position: relative;
   padding: 12px;
@@ -93,20 +71,6 @@ body {
     background 0.25s ease;
 }
 
-.kd-track-card::before {
-  content: "";
-  position: absolute;
-  inset: -40%;
-  background: radial-gradient(circle at center,
-    rgba(255,255,255,0.18),
-    transparent 60%);
-  opacity: 0;
-  transform: scale(0.8);
-  transition:
-    opacity 0.35s ease,
-    transform 0.35s ease;
-}
-
 .kd-track-card:hover {
   transform: translateY(-6px) scale(1.02);
   box-shadow:
@@ -115,18 +79,12 @@ body {
   background: rgba(0, 0, 0, 0.75);
 }
 
-.kd-track-card:hover::before {
-  opacity: 1;
-  transform: scale(1.1);
-}
-
-/* ===== SOUNDCloud EMBED WRAPPER ===== */
 .kd-track-embed {
   border-radius: 12px;
   overflow: hidden;
 }
 
-/* ===== CALL-TO-ACTION BUTTONS ROW ===== */
+/* ===== CTA BUTTONS ===== */
 .kd-cta-row {
   display: flex;
   justify-content: center;
@@ -164,59 +122,19 @@ body {
   background: linear-gradient(135deg, #00ff99, #9933ff);
 }
 
-.kd-cta {
-  animation: kdCtaBreath 4s ease-in-out infinite;
-}
-
-@keyframes kdCtaBreath {
-  0%   { box-shadow: 0 0 10px rgba(255,255,255,0.3); }
-  50%  { box-shadow: 0 0 22px rgba(255,255,255,0.9); }
-  100% { box-shadow: 0 0 10px rgba(255,255,255,0.3); }
-}
-
 .kd-cta:hover {
   transform: scale(1.05);
   filter: brightness(1.2);
 }
 
-/* ===== FOOTER GLOW ===== */
+/* ===== FOOTER ===== */
 .kd-footer {
   text-align: center;
   padding: 30px 20px 40px;
   color: #ffffff;
   font-size: 0.9rem;
   text-shadow: 0 0 6px rgba(0,0,0,0.8);
-  animation: kdFooterHue 20s linear infinite;
 }
-
-@keyframes kdFooterHue {
-  0%   { filter: hue-rotate(0deg); }
-  100% { filter: hue-rotate(360deg); }
-}
-
-/* ===== OPTIONAL: PSYCHEDELIC DIVIDERS ===== */
-.kd-divider {
-  height: 4px;
-  margin: 30px auto;
-  max-width: 600px;
-  border-radius: 999px;
-  background: linear-gradient(90deg,
-    #ff00ff,
-    #00ffff,
-    #ffff00,
-    #ff6600,
-    #00ff66,
-    #6600ff);
-  background-size: 300% 100%;
-  animation: kdDividerFlow 12s linear infinite;
-}
-
-@keyframes kdDividerFlow {
-  0%   { background-position: 0% 50%; }
-  100% { background-position: 100% 50%; }
-}
-
-@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
 </style>
 </head>
 
@@ -232,72 +150,73 @@ body {
   <h2 class="kd-section-title">FEATURED TRACKS — THE SOUND OF KINETIC DREAM</h2>
 </section>
 
-<section class="kd-track-grid">
-
-  <!-- Replace track IDs with your real SoundCloud track numbers -->
-  <div class="kd-track">
-  <iframe 
-    width="100%" 
-    height="166" 
-    scrolling="no" 
-    frameborder="no" 
-    allow="autoplay; encrypted-media" 
-    src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2343295871&color=%23be7691&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true">
-  </iframe>
-
-  <div style="
-    font-size: 10px; 
-    color: #cccccc;
-    line-break: anywhere;
-    word-break: normal;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis; 
-    font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
-    font-weight: 100;">
-    
-    <a href="https://soundcloud.com/alexander-robert-gunnison" 
-       title="Murphy Gunnison [KINETIC DREAM]" 
-       target="_blank" 
-       style="color: #cccccc; text-decoration: none;">
-       Murphy Gunnison [KINETIC DREAM]
-    </a> · 
-
-    <a href="https://soundcloud.com/alexander-robert-gunnison/i-write-mp3" 
-       title="I write.mp3" 
-       target="_blank" 
-       style="color: #cccccc; text-decoration: none;">
-       I write.mp3
-    </a>
-
-  </div>
-</div>
+<!-- ⭐⭐⭐ CENTERED 2-COLUMN / 3-ROW SOUNDCLOUD GRID ⭐⭐⭐ -->
+<section 
+  class="kd-track-grid" 
+  style="
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    max-width: 900px;
+    margin: 0 auto 60px;
+    padding: 0 20px;
+    justify-items: center;
+  "
+>
 
   <div class="kd-track-card"><div class="kd-track-embed">
     <iframe width="100%" height="166" scrolling="no" frameborder="no"
-      src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/000000000&color=%23ff5500">
+      src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2343295871&color=%23be7691">
     </iframe>
   </div></div>
 
   <div class="kd-track-card"><div class="kd-track-embed">
     <iframe width="100%" height="166" scrolling="no" frameborder="no"
-      src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/000000000&color=%23ff5500">
+      src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/000000001&color=%23ff5500">
     </iframe>
   </div></div>
 
   <div class="kd-track-card"><div class="kd-track-embed">
     <iframe width="100%" height="166" scrolling="no" frameborder="no"
-      src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/000000000&color=%23ff5500">
+      src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/000000002&color=%23ff5500">
     </iframe>
   </div></div>
 
   <div class="kd-track-card"><div class="kd-track-embed">
     <iframe width="100%" height="166" scrolling="no" frameborder="no"
-      src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/000000000&color=%23ff5500">
+      src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/000000003&color=%23ff5500">
     </iframe>
   </div></div>
 
   <div class="kd-track-card"><div class="kd-track-embed">
     <iframe width="100%" height="166" scrolling="no" frameborder="no"
-      src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/000000000&color=%23ff5500">
+      src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/000000004&color=%23ff5500">
     </iframe>
+  </div></div>
+
+  <div class="kd-track-card"><div class="kd-track-embed">
+    <iframe width="100%" height="166" scrolling="no" frameborder="no"
+      src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/000000005&color=%23ff5500">
+    </iframe>
+  </div></div>
+
+</section>
+
+<div class="kd-divider"></div>
+
+<section class="kd-cta-row">
+  <a class="kd-cta kd-cta--catalog" href="#" target="_blank">
+    Listen to Full Catalog
+  </a>
+
+  <a class="kd-cta kd-cta--soundcloud" href="#" target="_blank">
+    Follow on SoundCloud
+  </a>
+</section>
+
+<footer class="kd-footer">
+  © 2026 Kinetic Dream — A Personal Psychedelic Archive
+</footer>
+
+</body>
+</html>
