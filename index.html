@@ -19,7 +19,7 @@ body {
     #6600ff
   );
   background-size: 800% 800%;
-  animation: kdBackgroundFlow 60s ease infinite;
+  animation: kdBackgroundFlow 80s ease infinite;
   font-family: 'Trebuchet MS', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
@@ -87,7 +87,8 @@ body {
 /* ⭐ NEW: GLOW FRAME AROUND SOUNDCLOUD BLOCK ⭐ */
 .kd-soundcloud-frame {
   display: flex;
-justify-content: center;.kd-soundcloud-frame {
+justify-content: center;
+  .kd-soundcloud-frame {
   max-width: 1000px;
   margin: 0 auto 60px;
   padding: 30px;
@@ -97,7 +98,7 @@ justify-content: center;.kd-soundcloud-frame {
     0 0 20px rgba(255, 0, 255, 0.7),
     0 0 40px rgba(0, 255, 255, 0.7),
     0 0 60px rgba(255, 255, 0, 0.7);
-  backdrop-filter: blur(4px);
+  backdrop-filter: blur(8px);
 
   /* ⭐ ADD THESE ⭐ */
   display: flex;
@@ -179,16 +180,16 @@ justify-content: center;.kd-soundcloud-frame {
 <div class="kd-divider"></div>
 
 <section>
-  <h2 class="kd-section-title">FEATURED TRACKS — THE SOUND OF KINETIC DREAM</h2>
+  <h2 centered, class="kd-section-title">FEATURED TRACKS — THE SOUND OF KINETIC DREAM</h2>
 </section>
 
 <!-- ⭐⭐⭐ GLOW FRAME + CENTERED 2-COLUMN / 3-ROW GRID ⭐⭐⭐ -->
-<div class="kd-soundcloud-frame">
+<div centered, class="kd-soundcloud-frame">
 
 <section 
   class="kd-track-grid" 
   style="
-    display: grid;
+    centered,display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 24px;
     max-width: 900px;
@@ -199,37 +200,37 @@ justify-content: center;.kd-soundcloud-frame {
 >
 
   <div class="kd-track-card"><div class="kd-track-embed">
-    <iframe width="100%" height="166" scrolling="no" frameborder="no"
+    <iframe centered,width="100%" height="166" scrolling="no" frameborder="no"
       src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2343295871&color=%23be7691">
     </iframe>
   </div></div>
 
   <div class="kd-track-card"><div class="kd-track-embed">
-    <iframe width="100%" height="166" scrolling="no" frameborder="no"
+    <iframe centered,width="100%" height="166" scrolling="no" frameborder="no"
       src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/000000001&color=%23ff5500">
     </iframe>
   </div></div>
 
   <div class="kd-track-card"><div class="kd-track-embed">
-    <iframe width="100%" height="166" scrolling="no" frameborder="no"
+    <iframe centered,width="100%" height="166" scrolling="no" frameborder="no"
       src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/000000002&color=%23ff5500">
     </iframe>
   </div></div>
 
   <div class="kd-track-card"><div class="kd-track-embed">
-    <iframe width="100%" height="166" scrolling="no" frameborder="no"
+    <iframe centered,width="100%" height="166" scrolling="no" frameborder="no"
       src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/000000003&color=%23ff5500">
     </iframe>
   </div></div>
 
   <div class="kd-track-card"><div class="kd-track-embed">
-    <iframe width="100%" height="166" scrolling="no" frameborder="no"
+    <iframe centered,width="100%" height="166" scrolling="no" frameborder="no"
       src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/000000004&color=%23ff5500">
     </iframe>
   </div></div>
 
   <div class="kd-track-card"><div class="kd-track-embed">
-    <iframe width="100%" height="166" scrolling="no" frameborder="no"
+    <iframe centered,width="100%" height="166" scrolling="no" frameborder="no"
       src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/000000005&color=%23ff5500">
     </iframe>
   </div></div>
@@ -253,6 +254,6 @@ justify-content: center;.kd-soundcloud-frame {
 <footer class="kd-footer">
   © 2026 Kinetic Dream — A Personal Psychedelic Archive
 </footer>
-
+</centered>
 </body>
 </html>
