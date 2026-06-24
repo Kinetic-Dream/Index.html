@@ -29,6 +29,18 @@ body {
   100% { background-position: 0% 50%; }
 }
 
+/* ===== FLOATING BOUNCER BEHIND GRID ===== */
+#bouncer {
+  position: fixed;
+  top: 50px;
+  left: 50px;
+  z-index: 1; /* behind grid */
+  opacity: 0.55;
+  pointer-events: none;
+  font-size: 40px;
+  filter: drop-shadow(0 0 12px magenta);
+}
+
 /* ===== BANNER ===== */
 .kd-banner {
   width: 100%;
@@ -183,6 +195,9 @@ body {
 
 <body>
 
+<!-- ⭐ BOUNCER BEHIND GRID ⭐ -->
+<div id="bouncer">🌟</div>
+
 <div class="kd-banner">
   <img src="kd-banner.PNG" alt="Kinetic Dream Banner">
 </div>
@@ -246,6 +261,31 @@ body {
 <footer class="kd-footer">
   © 2026 Kinetic Dream — A Personal Psychedelic Archive
 </footer>
+
+<!-- ⭐ BOUNCER SCRIPT ⭐ -->
+<script>
+let x = 50, y = 50;
+let dx = 0.8, dy = 0.8;
+const el = document.getElementById("bouncer");
+
+function animate() {
+  const w = window.innerWidth - el.offsetWidth;
+  const h = window.innerHeight - el.offsetHeight;
+
+  x += dx;
+  y += dy;
+
+  if (x <= 0 || x >= w) dx = -dx;
+  if (y <= 0 || y >= h) dy = -dy;
+
+  el.style.left = x + "px";
+  el.style.top = y + "px";
+
+  requestAnimationFrame(animate);
+}
+
+animate();
+</script>
 
 </body>
 </html>
