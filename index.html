@@ -16,24 +16,55 @@ body {
     overflow-x: hidden;
 }
 
-/* ---------------- FLOATING ORB BACKGROUND ---------------- */
-#orb {
+/* ---------------- FLOATING ORBS ---------------- */
+#orb1, #orb2 {
     position: fixed;
     top: 50%;
     left: 50%;
     width: 900px;
     height: 900px;
-    background: radial-gradient(circle, rgba(255,0,200,0.35), rgba(0,0,0,0));
     filter: blur(120px);
     transform: translate(-50%, -50%);
     animation: drift 22s ease-in-out infinite alternate;
     z-index: 0;
 }
 
+#orb1 {
+    background: radial-gradient(circle, rgba(255,0,200,0.35), rgba(0,0,0,0));
+}
+
+#orb2 {
+    background: radial-gradient(circle, rgba(0,255,255,0.35), rgba(0,0,0,0));
+    animation-direction: alternate-reverse;
+}
+
 @keyframes drift {
     0%   { transform: translate(-50%, -50%) scale(1); }
     50%  { transform: translate(-48%, -52%) scale(1.15); }
     100% { transform: translate(-52%, -48%) scale(1.05); }
+}
+
+/* ---------------- HEAVY SLOW-DRIFTING NEON SMOKE ---------------- */
+#smoke {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at 30% 30%, rgba(255,0,255,0.15), transparent),
+                radial-gradient(circle at 70% 70%, rgba(0,255,255,0.15), transparent),
+                radial-gradient(circle at 20% 80%, rgba(255,0,255,0.15), transparent),
+                radial-gradient(circle at 80% 20%, rgba(0,255,255,0.15), transparent);
+    filter: blur(180px);
+    animation: smokeFlow 60s linear infinite;
+    z-index: 1;
+    opacity: 0.9;
+}
+
+@keyframes smokeFlow {
+    0%   { transform: translate(0,0) scale(1); }
+    50%  { transform: translate(-10%, -10%) scale(1.2); }
+    100% { transform: translate(0,0) scale(1); }
 }
 
 /* ---------------- PAGE TITLE ---------------- */
@@ -43,7 +74,7 @@ h1 {
     text-shadow: 0 0 12px #ff00ff, 0 0 22px #ff00ff;
     margin-top: 20px;
     font-size: 3rem;
-    z-index: 2;
+    z-index: 3;
     position: relative;
 }
 
@@ -53,7 +84,7 @@ h1 {
     max-width: 1200px;
     margin: 20px auto 10px auto;
     text-align: center;
-    z-index: 2;
+    z-index: 3;
     position: relative;
 }
 
@@ -64,7 +95,7 @@ h1 {
     box-shadow: 0 0 25px #ff00ff, 0 0 45px #00ffff;
 }
 
-/* ---------------- OUTER NEON FRAME ---------------- */
+/* ---------------- OUTER NEON FRAME WITH SYNCED STROBE ---------------- */
 #outer-frame {
     width: 90%;
     max-width: 1200px;
@@ -72,11 +103,8 @@ h1 {
     padding: 25px;
     border-radius: 22px;
     background: rgba(0,0,0,0.35);
-    box-shadow:
-        0 0 25px #ff00ff,
-        0 0 45px #00ffff,
-        inset 0 0 25px #ff00ff;
-    z-index: 2;
+    animation: strobe 0.25s infinite;
+    z-index: 3;
     position: relative;
 }
 
@@ -85,7 +113,7 @@ h1 {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 28px;
-    z-index: 2;
+    z-index: 3;
     position: relative;
 }
 
@@ -95,24 +123,23 @@ h1 {
     }
 }
 
-/* ---------------- TRACK CARDS ---------------- */
+/* ---------------- TRACK CARDS WITH SYNCED FAST STROBE ---------------- */
 .track-card {
     padding: 18px;
     border-radius: 16px;
     background: rgba(20, 20, 20, 0.65);
-    box-shadow:
-        0 0 18px #ff00ff,
-        0 0 28px #00ffff,
-        inset 0 0 18px #ff00ff;
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    animation: strobe 0.25s infinite;
+    transition: transform 0.25s ease;
 }
 
 .track-card:hover {
     transform: scale(1.03);
-    box-shadow:
-        0 0 28px #ff00ff,
-        0 0 48px #00ffff,
-        inset 0 0 28px #ff00ff;
+}
+
+@keyframes strobe {
+    0%   { box-shadow: 0 0 20px #ff00ff, 0 0 40px #ff00ff; }
+    50%  { box-shadow: 0 0 20px #00ffff, 0 0 40px #00ffff; }
+    100% { box-shadow: 0 0 20px #ff00ff, 0 0 40px #ff00ff; }
 }
 
 iframe {
@@ -127,8 +154,14 @@ iframe {
 
 <body>
 
-<div id="orb"></div>
+<!-- FLOATING ORBS -->
+<div id="orb1"></div>
+<div id="orb2"></div>
 
+<!-- HEAVY NEON SMOKE -->
+<div id="smoke"></div>
+
+<!-- BANNER -->
 <div id="banner">
     <img src="kd-banner.PNG" alt="Kinetic Dream Banner">
 </div>
@@ -141,43 +174,43 @@ iframe {
 
         <!-- WEIRD MAGIC -->
         <div class="track-card">
-            <iframe scrolling="no" frameborder="no" allow="autoplay; encrypted-media"
-                src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2343295079&color=%23be7691&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true">
+            <iframe scrolling="no" allow="autoplay; encrypted-media"
+                src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2343295079&color=%23be7691&visual=true">
             </iframe>
         </div>
 
         <!-- ALL ALONE -->
         <div class="track-card">
-            <iframe scrolling="no" frameborder="no" allow="autoplay; encrypted-media"
-                src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2343295361&color=%23ec0a5f&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true">
+            <iframe scrolling="no" allow="autoplay; encrypted-media"
+                src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2343295361&color=%23ec0a5f&visual=true">
+            </iframe>
+        </div>
+
+        <!-- I WRITE (CENTERPIECE) -->
+        <div class="track-card">
+            <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay; encrypted-media"
+                src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2343295871&color=%23ec0a5f&visual=true">
             </iframe>
         </div>
 
         <!-- LUCY'S DREAM -->
         <div class="track-card">
-            <iframe scrolling="no" frameborder="no" allow="autoplay; encrypted-media"
-                src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2221514984&color=%23ec0a5f&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true">
+            <iframe scrolling="no" allow="autoplay; encrypted-media"
+                src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2221514984&color=%23ec0a5f&visual=true">
             </iframe>
         </div>
 
         <!-- ONE (TRIBUTE TO PINK FLOYD) -->
         <div class="track-card">
-            <iframe scrolling="no" frameborder="no" allow="autoplay; encrypted-media"
-                src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2237825525&color=%23ec0a5f&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true">
+            <iframe scrolling="no" allow="autoplay; encrypted-media"
+                src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2237825525&color=%23ec0a5f&visual=true">
             </iframe>
         </div>
 
         <!-- ECHOES THAT BRUISE -->
         <div class="track-card">
-            <iframe scrolling="no" frameborder="no" allow="autoplay; encrypted-media"
-                src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2343293759&color=%23ec0a5f&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true">
-            </iframe>
-        </div>
-
-        <!-- YOUR ORIGINAL SIXTH TRACK (PLACEHOLDER) -->
-        <div class="track-card">
-            <iframe scrolling="no" frameborder="no" allow="autoplay; encrypted-media"
-                src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/123456789&color=%23ff00ff&visual=true">
+            <iframe scrolling="no" allow="autoplay; encrypted-media"
+                src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2343293759&color=%23ec0a5f&visual=true">
             </iframe>
         </div>
 
