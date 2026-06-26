@@ -19,7 +19,7 @@ body {
     #6600ff
   );
   background-size: 800% 800%;
-  animation: kdBackgroundFlow 80s ease infinite;
+  animation: kdBackgroundFlow 120s linear infinite;
   font-family: 'Trebuchet MS', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
@@ -29,7 +29,7 @@ body {
   100% { background-position: 0% 50%; }
 }
 
-/* ===== FLOATING BOUNCER BEHIND GRID ===== */
+/* ===== FLOATING BOUNCER ===== */
 #bouncer {
   position: fixed;
   top: 50px;
@@ -37,8 +37,12 @@ body {
   z-index: 1;
   opacity: 0.90;
   pointer-events: none;
-  font-size: 40px;
   filter: drop-shadow(0 0 12px magenta);
+}
+
+#bouncer img {
+  width: 90px;
+  height: 90px;
 }
 
 /* ===== BANNER ===== */
@@ -51,8 +55,8 @@ body {
 }
 
 .kd-banner img {
-  width: auto;
-  max-width: 95%;
+  width: 100%;
+  max-width: 1400px;
   height: auto;
   display: block;
   margin: 0 auto;
@@ -65,10 +69,11 @@ body {
   font-weight: 700;
   color: #ffe66d;
   text-shadow: 0 0 8px rgba(0,0,0,0.7);
+  -webkit-text-stroke: 1px rgba(0,0,0,0.6);
   margin: 40px 0 30px;
 }
 
-/* ===== OUTER GLOW FRAME (ANIMATED) ===== */
+/* ===== OUTER GLOW FRAME ===== */
 .kd-soundcloud-frame {
   max-width: 1100px;
   margin: 0 auto 70px;
@@ -76,28 +81,7 @@ body {
   border-radius: 26px;
   background: rgba(0,0,0,0.35);
   backdrop-filter: blur(8px);
-  animation: kdOuterGlowPulse 6s ease-in-out infinite;
-}
-
-@keyframes kdOuterGlowPulse {
-  0% {
-    box-shadow:
-      0 0 20px rgba(255, 0, 255, 0.7),
-      0 0 40px rgba(0, 255, 255, 0.7),
-      0 0 60px rgba(255, 255, 0, 0.7);
-  }
-  50% {
-    box-shadow:
-      0 0 28px rgba(255, 255, 0, 0.9),
-      0 0 55px rgba(0, 255, 255, 0.9),
-      0 0 75px rgba(255, 0, 255, 0.9);
-  }
-  100% {
-    box-shadow:
-      0 0 20px rgba(255, 0, 255, 0.7),
-      0 0 40px rgba(0, 255, 255, 0.7),
-      0 0 60px rgba(255, 255, 0, 0.7);
-  }
+  box-shadow: 0 0 40px rgba(255,255,255,0.15);
 }
 
 /* ===== TRACK GRID ===== */
@@ -111,27 +95,34 @@ body {
   justify-items: center;
 }
 
-/* ===== TRACK CARD ===== */
+/* ===== TRACK CARD (MINIMAL FLASHING BORDER) ===== */
 .kd-track-card {
   width: 100%;
   padding: 14px;
   border-radius: 18px;
   background: rgba(0, 0, 0, 0.55);
-  box-shadow:
-    0 0 14px rgba(255, 0, 255, 0.7),
-    0 0 26px rgba(0, 255, 255, 0.6);
+  border: 2px solid transparent;
+  animation: kdBorderFlash 4s linear infinite;
   transition:
     transform 0.25s ease,
-    box-shadow 0.25s ease,
-    background 0.25s ease;
+    background 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+@keyframes kdBorderFlash {
+  0%   { border-color: #ff00ff; }
+  25%  { border-color: #00ffff; }
+  50%  { border-color: #ffff00; }
+  75%  { border-color: #ff6600; }
+  100% { border-color: #ff00ff; }
 }
 
 .kd-track-card:hover {
   transform: translateY(-6px) scale(1.03);
-  box-shadow:
-    0 0 20px rgba(255, 255, 0, 0.9),
-    0 0 34px rgba(0, 255, 255, 0.9);
   background: rgba(0, 0, 0, 0.75);
+  box-shadow:
+    0 0 18px rgba(255, 255, 0, 0.9),
+    0 0 28px rgba(0, 255, 255, 0.9);
 }
 
 .kd-track-embed {
@@ -196,11 +187,10 @@ body {
 
 <body>
 
-<!-- ⭐ BOUNCER BEHIND GRID ⭐ -->
+<!-- ⭐ BOUNCER ⭐ -->
 <div id="bouncer">
-    <img src="IMG_7553.gif" width="90%" height="90" alt="Floating Star">
+    <img src="IMG_7553.gif" alt="Floating Star">
 </div>
-
 
 <div class="kd-banner">
   <img src="kd-banner.PNG" alt="Kinetic Dream Banner">
@@ -212,12 +202,12 @@ body {
 
 <section class="kd-track-grid">
 
-  <!-- Track 1 -->
+  <!-- I Write -->
   <div class="kd-track-card">
     <div class="kd-track-embed">
       <iframe width="100%" height="200" scrolling="no" frameborder="no"
         allow="autoplay; encrypted-media"
-        src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2343295871&visual=true&show_teaser=true">
+        src="https://w.soundcloud.com/player/?url=https://api.soundcloud.com/tracks/2343295871&visual=true&show_teaser=true">
       </iframe>
     </div>
   </div>
@@ -227,7 +217,7 @@ body {
     <div class="kd-track-embed">
       <iframe width="100%" height="200" scrolling="no" frameborder="no"
         allow="autoplay; encrypted-media"
-        src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2343295079&visual=true&show_teaser=true">
+        src="https://w.soundcloud.com/player/?url=https://api.soundcloud.com/tracks/2343295079&visual=true&show_teaser=true">
       </iframe>
     </div>
   </div>
@@ -237,7 +227,7 @@ body {
     <div class="kd-track-embed">
       <iframe width="100%" height="200" scrolling="no" frameborder="no"
         allow="autoplay; encrypted-media"
-        src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2343295361&visual=true&show_teaser=true">
+        src="https://w.soundcloud.com/player/?url=https://api.soundcloud.com/tracks/2343295361&visual=true&show_teaser=true">
       </iframe>
     </div>
   </div>
@@ -247,7 +237,7 @@ body {
     <div class="kd-track-embed">
       <iframe width="100%" height="200" scrolling="no" frameborder="no"
         allow="autoplay; encrypted-media"
-        src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2221514984&visual=true&show_teaser=true">
+        src="https://w.soundcloud.com/player/?url=https://api.soundcloud.com/tracks/2221514984&visual=true&show_teaser=true">
       </iframe>
     </div>
   </div>
@@ -257,7 +247,7 @@ body {
     <div class="kd-track-embed">
       <iframe width="100%" height="200" scrolling="no" frameborder="no"
         allow="autoplay; encrypted-media"
-        src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2237825525&visual=true&show_teaser=true">
+        src="https://w.soundcloud.com/player/?url=https://api.soundcloud.com/tracks/2237825525&visual=true&show_teaser=true">
       </iframe>
     </div>
   </div>
@@ -267,7 +257,7 @@ body {
     <div class="kd-track-embed">
       <iframe width="100%" height="200" scrolling="no" frameborder="no"
         allow="autoplay; encrypted-media"
-        src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2343293759&visual=true&show_teaser=true">
+        src="https://w.soundcloud.com/player/?url=https://api.soundcloud.com/tracks/2343293759&visual=true&show_teaser=true">
       </iframe>
     </div>
   </div>
