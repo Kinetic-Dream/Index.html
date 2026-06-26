@@ -1,228 +1,316 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kinetic Dream</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Kinetic Dream — Psychedelic Museum</title>
 
 <style>
-
-/* ---------------- GLOBAL RESET ---------------- */
+/* ===== GLOBAL PAGE BACKGROUND — LIQUID LIGHT SHOW ===== */
 body {
-    margin: 0;
-    padding: 0;
-    background: black;
-    font-family: Arial, sans-serif;
-    overflow-x: hidden;
+  margin: 0;
+  background: linear-gradient(
+    270deg,
+    #ff00ff,
+    #00ffff,
+    #ffff00,
+    #ff6600,
+    #00ff66,
+    #6600ff
+  );
+  background-size: 800% 800%;
+  animation: kdBackgroundFlow 80s ease infinite;
+  font-family: 'Trebuchet MS', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
-/* ---------------- FLOATING ORBS ---------------- */
-#orb1, #orb2 {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    width: 900px;
-    height: 900px;
-    filter: blur(120px);
-    transform: translate(-50%, -50%);
-    animation: drift 22s ease-in-out infinite alternate;
-    z-index: 0;
+@keyframes kdBackgroundFlow {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
-#orb1 {
-    background: radial-gradient(circle, rgba(255,0,200,0.35), rgba(0,0,0,0));
+/* ===== FLOATING BOUNCER BEHIND GRID ===== */
+#bouncer {
+  position: fixed;
+  top: 50px;
+  left: 50px;
+  z-index: 1;
+  opacity: 0.55;
+  pointer-events: none;
+  font-size: 40px;
+  filter: drop-shadow(0 0 12px magenta);
 }
 
-#orb2 {
-    background: radial-gradient(circle, rgba(0,255,255,0.35), rgba(0,0,0,0));
-    animation-direction: alternate-reverse;
+/* ===== BANNER ===== */
+.kd-banner {
+  width: 100%;
+  max-width: 1920px;
+  margin: 0 auto;
+  text-align: center;
+  padding-top: 20px;
 }
 
-@keyframes drift {
-    0%   { transform: translate(-50%, -50%) scale(1); }
-    50%  { transform: translate(-48%, -52%) scale(1.15); }
-    100% { transform: translate(-52%, -48%) scale(1.05); }
+.kd-banner img {
+  width: auto;
+  max-width: 95%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
 }
 
-/* ---------------- HEAVY SLOW-DRIFTING NEON SMOKE ---------------- */
-#smoke {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle at 30% 30%, rgba(255,0,255,0.15), transparent),
-                radial-gradient(circle at 70% 70%, rgba(0,255,255,0.15), transparent),
-                radial-gradient(circle at 20% 80%, rgba(255,0,255,0.15), transparent),
-                radial-gradient(circle at 80% 20%, rgba(0,255,255,0.15), transparent);
-    filter: blur(180px);
-    animation: smokeFlow 60s linear infinite;
-    z-index: 1;
-    opacity: 0.9;
+/* ===== SECTION TITLE ===== */
+.kd-section-title {
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #ffe66d;
+  text-shadow: 0 0 8px rgba(0,0,0,0.7);
+  margin: 40px 0 30px;
 }
 
-@keyframes smokeFlow {
-    0%   { transform: translate(0,0) scale(1); }
-    50%  { transform: translate(-10%, -10%) scale(1.2); }
-    100% { transform: translate(0,0) scale(1); }
+/* ===== OUTER GLOW FRAME (ANIMATED) ===== */
+.kd-soundcloud-frame {
+  max-width: 1100px;
+  margin: 0 auto 70px;
+  padding: 40px;
+  border-radius: 26px;
+  background: rgba(0,0,0,0.35);
+  backdrop-filter: blur(8px);
+  animation: kdOuterGlowPulse 6s ease-in-out infinite;
 }
 
-/* ---------------- PAGE TITLE ---------------- */
-h1 {
-    text-align: center;
-    color: #ff00ff;
-    text-shadow: 0 0 12px #ff00ff, 0 0 22px #ff00ff;
-    margin-top: 20px;
-    font-size: 3rem;
-    z-index: 3;
-    position: relative;
+@keyframes kdOuterGlowPulse {
+  0% {
+    box-shadow:
+      0 0 20px rgba(255, 0, 255, 0.7),
+      0 0 40px rgba(0, 255, 255, 0.7),
+      0 0 60px rgba(255, 255, 0, 0.7);
+  }
+  50% {
+    box-shadow:
+      0 0 28px rgba(255, 255, 0, 0.9),
+      0 0 55px rgba(0, 255, 255, 0.9),
+      0 0 75px rgba(255, 0, 255, 0.9);
+  }
+  100% {
+    box-shadow:
+      0 0 20px rgba(255, 0, 255, 0.7),
+      0 0 40px rgba(0, 255, 255, 0.7),
+      0 0 60px rgba(255, 255, 0, 0.7);
+  }
 }
 
-/* ---------------- BANNER ---------------- */
-#banner {
-    width: 100%;
-    max-width: 1200px;
-    margin: 20px auto 10px auto;
-    text-align: center;
-    z-index: 3;
-    position: relative;
+/* ===== TRACK GRID ===== */
+.kd-track-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 20px;
+  justify-items: center;
 }
 
-#banner img {
-    width: 100%;
-    height: auto;
-    border-radius: 12px;
-    box-shadow: 0 0 25px #ff00ff, 0 0 45px #00ffff;
+/* ===== TRACK CARD ===== */
+.kd-track-card {
+  width: 100%;
+  padding: 14px;
+  border-radius: 18px;
+  background: rgba(0, 0, 0, 0.55);
+  box-shadow:
+    0 0 14px rgba(255, 0, 255, 0.7),
+    0 0 26px rgba(0, 255, 255, 0.6);
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    background 0.25s ease;
 }
 
-/* ---------------- OUTER NEON FRAME WITH SYNCED STROBE ---------------- */
-#outer-frame {
-    width: 90%;
-    max-width: 1200px;
-    margin: 30px auto;
-    padding: 25px;
-    border-radius: 22px;
-    background: rgba(0,0,0,0.35);
-    animation: strobe 0.25s infinite;
-    z-index: 3;
-    position: relative;
+.kd-track-card:hover {
+  transform: translateY(-6px) scale(1.03);
+  box-shadow:
+    0 0 20px rgba(255, 255, 0, 0.9),
+    0 0 34px rgba(0, 255, 255, 0.9);
+  background: rgba(0, 0, 0, 0.75);
 }
 
-/* ---------------- GRID ---------------- */
-.grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 28px;
-    z-index: 3;
-    position: relative;
+.kd-track-embed {
+  border-radius: 12px;
+  overflow: hidden;
+  height: 200px;
 }
 
-@media (max-width: 768px) {
-    .grid {
-        grid-template-columns: 1fr;
-    }
+/* ===== CTA BUTTONS ===== */
+.kd-cta-row {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  margin: 40px 0 60px;
+  flex-wrap: wrap;
 }
 
-/* ---------------- TRACK CARDS WITH SYNCED FAST STROBE ---------------- */
-.track-card {
-    padding: 18px;
-    border-radius: 16px;
-    background: rgba(20, 20, 20, 0.65);
-    animation: strobe 0.25s infinite;
-    transition: transform 0.25s ease;
+.kd-cta {
+  display: inline-block;
+  padding: 14px 28px;
+  border-radius: 999px;
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #ffffff;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+  box-shadow:
+    0 0 12px rgba(0,0,0,0.8),
+    0 0 20px rgba(255,255,255,0.4);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    filter 0.2s ease;
 }
 
-.track-card:hover {
-    transform: scale(1.03);
+.kd-cta--catalog {
+  background: linear-gradient(135deg, #ff8c00, #ffff00);
 }
 
-/* ★★★ UPDATED 5PX GLOW ★★★ */
-@keyframes strobe {
-    0%   { box-shadow: 0 0 5px #ff00ff, 0 0 5px #ff00ff; }
-    50%  { box-shadow: 0 0 5px #00ffff, 0 0 5px #00ffff; }
-    100% { box-shadow: 0 0 5px #ff00ff, 0 0 5px #ff00ff; }
+.kd-cta--soundcloud {
+  background: linear-gradient(135deg, #00ff99, #9933ff);
 }
 
-iframe {
-    width: 100%;
-    height: 220px;
-    border: none;
-    border-radius: 12px;
+.kd-cta:hover {
+  transform: scale(1.05);
+  filter: brightness(1.2);
 }
 
+/* ===== FOOTER ===== */
+.kd-footer {
+  text-align: center;
+  padding: 30px 20px 40px;
+  color: #ffffff;
+  font-size: 0.9rem;
+  text-shadow: 0 0 6px rgba(0,0,0,0.8);
+}
 </style>
 </head>
 
 <body>
 
-<!-- FLOATING ORBS -->
-<div id="orb1"></div>
-<div id="orb2"></div>
+<!-- ⭐ BOUNCER BEHIND GRID ⭐ -->
+<div id="bouncer">🌟</div>
 
-<!-- HEAVY NEON SMOKE -->
-<div id="smoke"></div>
-
-<!-- BANNER -->
-<div id="banner">
-    <img src="kd-banner.PNG" alt="Kinetic Dream Banner">
+<div class="kd-banner">
+  <img src="kd-banner.PNG" alt="Kinetic Dream Banner">
 </div>
 
-<h1>KINETIC DREAM</h1>
+<h2 class="kd-section-title">FEATURED TRACKS — THE SOUND OF KINETIC DREAM</h2>
 
-<div id="outer-frame">
+<div class="kd-soundcloud-frame">
 
-    <div class="grid">
+<section class="kd-track-grid">
 
-        <!-- WEIRD MAGIC -->
-        <div class="track-card">
-            <iframe scrolling="no" allow="autoplay; encrypted-media"
-                src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2343295079&color=%23be7691&visual=true">
-            </iframe>
-        </div>
-
-        <!-- ALL ALONE -->
-        <div class="track-card">
-            <iframe scrolling="no" allow="autoplay; encrypted-media"
-                src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2343295361&color=%23ec0a5f&visual=true">
-            </iframe>
-        </div>
-
-        <!-- I WRITE (CENTERPIECE) -->
-        <div class="track-card">
-            <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay; encrypted-media"
-                src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2343295871&color=%23ec0a5f&visual=true">
-            </iframe>
-        </div>
-
-        <!-- LUCY'S DREAM -->
-        <div class="track-card">
-            <iframe scrolling="no" allow="autoplay; encrypted-media"
-                src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2221514984&color=%23ec0a5f&visual=true">
-            </iframe>
-        </div>
-
-        <!-- ONE (TRIBUTE TO PINK FLOYD) -->
-        <div class="track-card">
-            <iframe scrolling="no" allow="autoplay; encrypted-media"
-                src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2237825525&color=%23ec0a5f&visual=true">
-            </iframe>
-        </div>
-
-        <!-- ECHOES THAT BRUISE -->
-        <div class="track-card">
-            <iframe scrolling="no" allow="autoplay; encrypted-media"
-                src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2343293759&color=%23ec0a5f&visual=true">
-            </iframe>
-        </div>
-
-        <!-- STORY SECTION (unchanged) -->
-        <section id="kinetic-dream-story">
-            <!-- story content unchanged -->
-        </section>
-
+  <!-- Track 1 -->
+  <div class="kd-track-card">
+    <div class="kd-track-embed">
+      <iframe width="100%" height="200" scrolling="no" frameborder="no"
+        allow="autoplay; encrypted-media"
+        src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2343295871&visual=true&show_teaser=true">
+      </iframe>
     </div>
+  </div>
+
+  <!-- Weird Magic -->
+  <div class="kd-track-card">
+    <div class="kd-track-embed">
+      <iframe width="100%" height="200" scrolling="no" frameborder="no"
+        allow="autoplay; encrypted-media"
+        src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2343295079&visual=true&show_teaser=true">
+      </iframe>
+    </div>
+  </div>
+
+  <!-- All Alone -->
+  <div class="kd-track-card">
+    <div class="kd-track-embed">
+      <iframe width="100%" height="200" scrolling="no" frameborder="no"
+        allow="autoplay; encrypted-media"
+        src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2343295361&visual=true&show_teaser=true">
+      </iframe>
+    </div>
+  </div>
+
+  <!-- Lucy’s Dream -->
+  <div class="kd-track-card">
+    <div class="kd-track-embed">
+      <iframe width="100%" height="200" scrolling="no" frameborder="no"
+        allow="autoplay; encrypted-media"
+        src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2221514984&visual=true&show_teaser=true">
+      </iframe>
+    </div>
+  </div>
+
+  <!-- One (Tribute to Pink Floyd) -->
+  <div class="kd-track-card">
+    <div class="kd-track-embed">
+      <iframe width="100%" height="200" scrolling="no" frameborder="no"
+        allow="autoplay; encrypted-media"
+        src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2237825525&visual=true&show_teaser=true">
+      </iframe>
+    </div>
+  </div>
+
+  <!-- Echoes That Bruise -->
+  <div class="kd-track-card">
+    <div class="kd-track-embed">
+      <iframe width="100%" height="200" scrolling="no" frameborder="no"
+        allow="autoplay; encrypted-media"
+        src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2343293759&visual=true&show_teaser=true">
+      </iframe>
+    </div>
+  </div>
+
+</section>
 
 </div>
+
+<section class="kd-cta-row">
+  <a class="kd-cta kd-cta--catalog" href="#" target="_blank">
+    Listen to Full Catalog
+  </a>
+
+  <a class="kd-cta kd-cta--soundcloud" href="#" target="_blank">
+    Follow on SoundCloud
+  </a>
+</section>
+
+<footer class="kd-footer">
+  © 2026 Kinetic Dream — A Personal Psychedelic Archive
+</footer>
+
+<!-- ⭐ BOUNCER SCRIPT ⭐ -->
+<script>
+let x = 50, y = 50;
+let dx = 0.8, dy = 0.8;
+const el = document.getElementById("bouncer");
+
+function animate() {
+  const w = window.innerWidth - el.offsetWidth;
+  const h = window.innerHeight - el.offsetHeight;
+
+  x += dx;
+  y += dy;
+
+  if (x <= 0 || x >= w) dx = -dx;
+  if (y <= 0 || y >= h) dy = -dy;
+
+  el.style.left = x + "px";
+  el.style.top = y + "px";
+
+  requestAnimationFrame(animate);
+}
+
+animate();
+</script>
 
 </body>
 </html>
