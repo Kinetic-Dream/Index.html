@@ -301,6 +301,58 @@ function animate() {
 
 animate();
 </script>
+<!-- ⭐ HISTORY IMAGE ⭐ -->
+<div class="kd-history-image">
+  <img src="kd-history.png" alt="Kinetic Dream History Image">
+</div>
+
+<!-- ⭐ HISTORY TEXT ⭐ -->
+<div class="kd-history-text">
+  <p>So, you’ve never heard of The Kinetic Dream? Not surprising. It was a short‑lived but unforgettable gathering of three young men in Huntsville, Alabama, united by a love of rock music. They refused to be just another cover band. Murphy—known then as Bob—and Stewart began writing original songs, creating a folk‑rock sound unlike anything else in 1981.</p>
+
+  <p>Murphy had recently left the Navy and gone absent without leave, something he kept hidden from friends, family, and the band. Then he met Michael McAnally, who became the group’s drummer and Murphy’s lifelong brother‑in‑spirit. For the first time, Murphy found what he’d always wanted: a true friend and an outlet for his music.</p>
+
+  <p>Mike was mellow, funny, sharp, and gifted—able to echo the precision of Rush’s Neil Peart or the feel of Ringo Starr. Stewart had a quirky, memorable voice that fit the band perfectly. The lineup became: Stewart (lead vocals, rhythm guitar), Bob (backing vocals, rhythm guitar, some lead, bass), Mike (drums, backing vocals, rhythm guitar), and Jeff Kendrick (occasional bass).</p>
+
+  <p>They played a few parties and even a farm concert. Eventually they drove to Nashville with a postal copyright of their original songs, hoping to impress someone on Music Row. At American Sound Records, they proudly handed over their tape—only to discover it wasn’t their music at all, but Stewart’s father singing old country songs on eight mismatched tracks. A complete disaster.</p>
+
+  <p>Soon after, the Navy began searching for “Bob.” When Stewart learned the truth, he punched Murphy in the nose, and Murphy returned to the Navy to turn himself in. Thanks to testimony and a key witness, the AWOL charge was dropped, and he was honorably discharged.</p>
+
+  <p>Forty‑five years have passed. The original Kinetic Dream is gone; the others moved on. But Murphy—now the sole surviving creative force—is The Kinetic Dream. He writes, performs, and produces everything alone. And now, after all this time, opportunity knocks again.</p>
+</div>
+
+<section class="kd-cta-row">
+  <a class="kd-cta kd-cta--catalog" href="#" target="_blank">Listen to Full Catalog</a>
+  <a class="kd-cta kd-cta--soundcloud" href="#" target="_blank">Follow on SoundCloud</a>
+</section>
+
+<footer class="kd-footer">
+  © 2026 Kinetic Dream — A Personal Psychedelic Archive
+</footer>
+
+<script>
+let x = 50, y = 50;
+let dx = 0.8, dy = 0.8;
+const el = document.getElementById("bouncer");
+
+function animate() {
+  const w = window.innerWidth - el.offsetWidth;
+  const h = window.innerHeight - el.offsetHeight;
+
+  x += dx;
+  y += dy;
+
+  if (x <= 0 || x >= w) dx = -dx;
+  if (y <= 0 || y >= h) dy = -dy;
+
+  el.style.left = x + "px";
+  el.style.top = y + "px";
+
+  requestAnimationFrame(animate);
+}
+animate();
+</script>
 
 </body>
 </html>
+
